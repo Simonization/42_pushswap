@@ -6,15 +6,51 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:27:03 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/15 17:03:06 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:50:38 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	main(int ac, char **av)
+void    sort_stack(t_node **stack_a, t_node **stack_b)
 {
-	(void) ac;
-	(void) av;
+    int size;
+    
+    size = get_stack_size(*stack_a);
+    if (size <= 1)
+        return;
+    else if (size == 2)
+        sa(stack_a);
+    else if (size == 3)
+        sort_three(stack_a);
+   // else if (size <= 5)
+   //     sort_five(stack_a, stack_b);
+   (void)stack_b;
+  //  else
+  //      sort_large(stack_a, stack_b);
+}
+
+int	main(int ac, char **av)
+{	
+	t_node *stack_a;
+	t_node *stack_b;
+
+	if (ac < 2)
+		return (0);
+	check_args(av);
+	stack_a = init_stack_a(ac, av);
+	stack_b = init_stack_b();
+	
+	print_stack(stack_a, stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	
+	sb(&stack_b);
+//	ra(&stack_a);
+//	rb(&stack_b);
+//	rr(&stack_a, &stack_b);
+//	pa(&stack_a, &stack_b);
+//	pa(&stack_a, &stack_b);
+	print_stack(stack_a, stack_b);
 	return (0);
 }

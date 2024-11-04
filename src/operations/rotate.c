@@ -6,16 +6,16 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:31 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/24 19:20:05 by slangero         ###   ########.fr       */
+/*   Updated: 2024/10/27 15:50:38 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
-static void	rotate(t_stack **stack)
+static void	rotate(t_node **stack)
 {
-	t_stack	*tmp;
-	t_stack	*tail;
+	t_node	*tmp;
+	t_node	*tail;
 
 	tmp = *stack;
 	*stack = (*stack)->next;
@@ -28,18 +28,18 @@ static void	rotate(t_stack **stack)
 void	ra(t_node **stack_a)
 {
 	rotate(stack_a);
-	ft_putstr("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	rb(t_node **stack_b)
 {
 	rotate(stack_b);
-	ft_putstr("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
-	ft_putstr("rr\n");
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putstr_fd("rr\n", 1);
 }

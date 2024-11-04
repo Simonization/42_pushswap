@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   fill.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 18:00:51 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/27 19:13:33 by slangero         ###   ########.fr       */
+/*   Created: 2024/10/27 12:40:40 by slangero          #+#    #+#             */
+/*   Updated: 2024/10/27 15:35:50 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void	swap(t_node **stack)
+t_node	*node_new(int nb)
 {
-	t_node	*tmp;
+	t_node	*node_new;
 
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	tmp = (*stack)->next;
-	(*stack)->next = tmp->next;
-	tmp->next = *stack;
-	*stack = tmp;
+	node_new = malloc(sizeof(t_node));
+	node_new->value = nb;
+	node_new->next = NULL;
+	return (node_new);
 }
 
-void	sa(t_node **stack_a)
+t_node	*stack_add(t_node *stack, t_node *node_new)
 {
-	swap(stack_a);
-	ft_putstr_fd("sa\n", 1);
-}
+	t_node	*last;
 
-void	sb(t_node **stack_b)
-{
-	swap(stack_b);
-	ft_putstr_fd("sb\n", 1);
-}
+	last = get_last_node(stack);
 
-void	ss(t_node **stack_a, t_node **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	last->next = node_new;
+	return (node_new);
 }

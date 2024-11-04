@@ -6,12 +6,12 @@
 #    By: slangero <slangero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 13:47:33 by slangero          #+#    #+#              #
-#    Updated: 2024/10/15 17:00:10 by slangero         ###   ########.fr        #
+#    Updated: 2024/10/27 16:34:48 by slangero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-------------------------PROGRAM NAME------------------------#
-NAME 				= tinyshell
+NAME 				= push_swap
 all: 				$(NAME)
 MAKEFLAGS 			= --no-print-directory
 
@@ -39,7 +39,7 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 #----------------------------HEADERS--------------------------#
 INC_DIR				=	include
 CPPFLAGS			+=	-I$(INC_DIR)
-CPPFLAGS			+=	-I$(LIBFT_DIR)/$(INC_DIR)
+CPPFLAGS			+=	-I$(LIBFT_DIR)
 
 #---------------------------LIBRARIES-------------------------#
 LIBFT_DIR			=	libft
