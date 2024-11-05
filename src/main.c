@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:27:03 by slangero          #+#    #+#             */
-/*   Updated: 2024/11/03 18:50:38 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:13:33 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	main(int ac, char **av)
 	t_node *stack_b;
 
 	if (ac < 2)
-		return (0);
+		return (1);
+	else if (argc == 2)
+		av = ft_split(av[1], ' ');
 	check_args(av);
 	stack_a = init_stack_a(ac, av);
 	stack_b = init_stack_b();

@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:28:13 by slangero          #+#    #+#             */
-/*   Updated: 2024/11/03 19:21:45 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:08:53 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,28 @@
 
 #define PUSHSWAP_H
 
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
 # include <stdio.h>
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <limits.h>
+# include <stdbool>
 # include "libft.h"
 
 typedef struct s_node
 {
 	int				value;
-//	int				pos;
+	int				pos;
 //	int				target_pos;
+	bool			median;
+	int				cost;
+	bool			cheapest;
 //	int				cost_a;
 //	int				cost_b;
+	struct s_node	*target_node;
 	struct s_node	*next;
+	struct s_node	*prev;	
 }	t_node;
 
 
