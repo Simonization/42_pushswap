@@ -6,11 +6,24 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 21:26:40 by slangero          #+#    #+#             */
-/*   Updated: 2024/11/01 21:38:47 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:48:42 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+int split_av_size(char **av)
+{
+    size_t  i;
+    
+    i = 0;
+    while(*av)
+    {
+        i++;
+        av++;
+    }
+    return (i);
+}
 
 long int    ft_atol(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:12:27 by slangero          #+#    #+#             */
-/*   Updated: 2024/11/03 18:02:17 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/10 16:08:09 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_node	*init_stack_a(int argc, char **argv)
 	stack_a = NULL;
 	nb = 0;
 	i = 1;
+	
 	while (i < argc)
 	{
 		nb = ft_atoi(argv[i]);
@@ -56,4 +57,27 @@ t_node	*get_penultimate_node(t_node *stack)
 	while (stack && stack->next && stack->next->next != NULL)
 		stack = stack->next;
 	return (stack);
+}
+
+void	prep_for_push(t_node	**stack,
+						t_node	*top_node,
+						char	stack_name)
+{
+	while (*stack != top_node)
+	{
+		if(stack_name == 'a')
+		{
+			if (top_node->upper_median)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->upper_median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+	}
 }

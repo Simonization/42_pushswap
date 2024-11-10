@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:31 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/27 15:50:38 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/10 16:01:54 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,14 @@ void	rr(t_node **stack_a, t_node **stack_b)
 	rotate(stack_a);
 	rotate(stack_b);
 	ft_putstr_fd("rr\n", 1);
+}
+
+void	rotate_both(t_node	**stack_a,
+					t_node	**stack_b,
+					t_node	*cheapest_node)
+{
+	while (*stack_b != cheapest_node->target_node && *stack_a != cheapest_node)
+		rr(stack_a, stack_b);
+	current_pos(*stack_a);
+	current_pos(*stack_b);
 }
