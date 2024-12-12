@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 16:13:25 by slangero          #+#    #+#             */
-/*   Updated: 2024/11/10 16:17:14 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:53:15 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	set_target_b(t_node *stack_a, t_node *stack_b)
 	t_node			*target_node;
 	long			best_match_pos;
 
-	while(stack_b)
+	while (stack_b)
 	{
 		best_match_pos = LONG_MAX;
 		current_a = stack_a;

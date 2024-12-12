@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:06:36 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/27 17:55:11 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:13:51 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	print_stack(t_node *stack_a, t_node *stack_b)
 {
 	printf("A B\n");
 	printf("---\n");
-
-	while(stack_a || stack_b)
+	while (stack_a || stack_b)
 	{
 		if (stack_a)
 			printf("%i", stack_a->value);
@@ -32,7 +31,6 @@ void	print_stack(t_node *stack_a, t_node *stack_b)
 			printf(" ");
 		if (stack_b)
 			stack_b = stack_b->next;
-	printf("\n");
-		
+		printf("\n");
 	}
 }

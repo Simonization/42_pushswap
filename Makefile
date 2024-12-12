@@ -6,7 +6,7 @@
 #    By: slangero <slangero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 13:47:33 by slangero          #+#    #+#              #
-#    Updated: 2024/10/27 16:34:48 by slangero         ###   ########.fr        #
+#    Updated: 2024/11/27 13:22:56 by slangero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ MAKEFLAGS 			= --no-print-directory
 
 #---------------------------COMPILER--------------------------#
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-Wall -Wextra -Werror -fsanitize=address
 CFLAGS				+=	-g3
 COMPILER			=	$(CC) $(CFLAGS)
 LINKER				=	$(CC) $(CFLAGS)
