@@ -6,48 +6,27 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:31 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/11 12:44:07 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:47:05 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
-static void    rotate(t_node **stack)
+static void	rotate(t_node **stack)
 {
-    t_node  *first_node;
-    t_node  *tail;
+	t_node	*first_node;
+	t_node	*tail;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-
-    first_node = *stack;
-    tail = get_last_node(*stack);
-    
-    // Update the new head
-    *stack = first_node->next;
-    (*stack)->prev = NULL;
-    
-    // Update the old head (now becoming tail)
-    first_node->next = NULL;
-    first_node->prev = tail;
-    
-    // Update the old tail
-    tail->next = first_node;
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	first_node = *stack;
+	tail = get_last_node(*stack);
+	*stack = first_node->next;
+	(*stack)->prev = NULL;
+	first_node->next = NULL;
+	first_node->prev = tail;
+	tail->next = first_node;
 }
-
-
-// static void	rotate(t_node **stack)
-// {
-// 	t_node	*tmp;
-// 	t_node	*tail;
-
-// 	tmp = *stack;
-// 	*stack = (*stack)->next;
-// 	tail = get_last_node(*stack);
-// 	tmp->next = NULL;
-// 	tail->next = tmp;
-// }
 
 void	ra(t_node **stack_a)
 {
@@ -68,6 +47,16 @@ void	rr(t_node **stack_a, t_node **stack_b)
 	ft_putstr_fd("rr\n", 1);
 }
 
+// static void	rotate(t_node **stack)
+// {
+// 	t_node	*tmp;
+// 	t_node	*tail;
+// 	tmp = *stack;
+// 	*stack = (*stack)->next;
+// 	tail = get_last_node(*stack);
+// 	tmp->next = NULL;
+// 	tail->next = tmp;
+// }
 // void	rotate_both(t_node	**stack_a,
 // 					t_node	**stack_b,
 // 					t_node	*cheapest_node)

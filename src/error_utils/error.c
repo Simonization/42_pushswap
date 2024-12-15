@@ -6,25 +6,25 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 19:22:04 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 16:23:06 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:42:12 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void free_args(char **args)
+void	free_args(char **args)
 {
-    int i;
+	int	i;
 
-    if (!args)
-        return;
-    i = 0;
-    while (args[i])
-    {
-        free(args[i]);
-        i++;
-    }
-    free(args);
+	if (!args)
+		return ;
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }
 
 void	free_stack(t_node **stack)

@@ -6,19 +6,18 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 21:26:40 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 18:29:24 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:40:57 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int is_invalid_sign(char *str)
+static int	is_invalid_sign(char *str)
 {
 	if (!str || !*str)
 		return (1);
 	if ((*str == '+' || *str == '-') && *(str + 1) == '\0')
 		return (1);
-		
 	return (0);
 }
 
@@ -42,7 +41,7 @@ int	syntax_errors(char *str)
 	return (0);
 }
 
-int is_within_limits(char *str)
+int	is_within_limits(char *str)
 {
 	long	num;
 
@@ -52,12 +51,12 @@ int is_within_limits(char *str)
 	return (1);
 }
 
-int    has_duplicates(char **argv)
+int	has_duplicates(char **argv)
 {
-	int        i;
-	int        j;
-	long int    num1;
-	long int    num2;
+	int			i;
+	int			j;
+	long int	num1;
+	long int	num2;
 
 	i = 0;
 	while (argv[i])
@@ -85,7 +84,6 @@ int	validate_args(char **argv)
 	zero_count = 0;
 	while (argv[i])
 	{
-
 		if (syntax_errors(argv[i]))
 			return (0);
 		if (!is_within_limits(argv[i]))
@@ -96,7 +94,6 @@ int	validate_args(char **argv)
 			return (0);
 		if (is_invalid_sign(argv[i]))
 			return (0);
-
 		i++;
 	}
 	if (has_duplicates(argv))

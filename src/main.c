@@ -6,15 +6,15 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:27:03 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 17:52:22 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:51:07 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void ft_printlst(t_node *node)
+void	ft_printlst(t_node *node)
 {
-	while(node)
+	while (node)
 	{
 		printf("value: %d\n", node->value);
 		node = node->next;
@@ -41,7 +41,7 @@ char	**parse_arguments(int ac, char **av)
 	char	**args;
 	char	*str;
 	char	*temp;
-	
+
 	if (ac == 2)
 		return (ft_split(av[1], ' '));
 	str = ft_strjoin(av[1], " ");
@@ -64,13 +64,12 @@ int	main(int ac, char **av)
 	t_node	*stack_a;
 	t_node	*stack_b;
 	char	**args;
-	// int args_count;
 
 	if (ac < 2)
-  	{
-        ft_putstr_fd("Error\n", 2);
-        return (1);
-    }
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
 	args = parse_arguments(ac, av);
 	if (!args || !args[0])
 	{
@@ -85,12 +84,10 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	// args_count = 0;
-    // while (args[args_count])
-    //     args_count++;
-    init_stack_a(&stack_a,/* args_count + 1,*/ args); 
+	init_stack_a(&stack_a, args);
 	stack_b = NULL;
-	sort_stack(&stack_a, &stack_b);
+	if (!stack_is_sorted(stack_a))
+		sort_stack(&stack_a, &stack_b);
 	free(args);
 	free_stack(&stack_a);
 	return (0);

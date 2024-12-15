@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:40:40 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/13 15:31:45 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:43:46 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_node	*node_new(int nb)
 	node_new = malloc(sizeof(t_node));
 	if (!node_new)
 		return (NULL);
-	//printf("nb: %d\n", nb);
 	node_new->value = nb;
 	node_new->pos = 0;
 	node_new->cost = 0;

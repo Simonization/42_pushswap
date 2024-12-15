@@ -6,29 +6,28 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:12:27 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 17:52:35 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:43:29 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
-void	init_stack_a(t_node **stack_a, /*int ac,*/ char **av)
+void	init_stack_a(t_node **stack_a, char **av)
 {
-    long		nb;
-    int			i;
+	long	nb;
+	int		i;
 
-    *stack_a = NULL;
-    i = 0;
-    while (av[i])
-    {
+	*stack_a = NULL;
+	i = 0;
+	while (av[i])
+	{
 		nb = ft_atol(av[i]);
-        if (i == 0)
-            *stack_a = node_new((int)nb);
-        else
-            stack_add(*stack_a, node_new((int)nb));
-        i++;
-    }
+		if (i == 0)
+			*stack_a = node_new((int)nb);
+		else
+			stack_add(*stack_a, node_new((int)nb));
+		i++;
+	}
 }
 
 t_node	*init_stack_b(void)
