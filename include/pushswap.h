@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:28:13 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/11 12:52:55 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:28:30 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,9 @@ typedef struct s_node
 {
 	int				value;
 	int				pos;
-//	int				target_pos;
 	bool			upper_median;
 	int				cost;
 	bool			cheapest;
-//	int				cost_a;
-//	int				cost_b;
 	struct s_node	*target_node;
 	struct s_node	*next;
 	struct s_node	*prev;	
@@ -53,7 +50,7 @@ void		rra(t_node **stack_a);
 void		rrb(t_node **stack_b);
 void		rrr(t_node **stack_a, t_node **stack_b);
 
-void 		init_stack_a(t_node **stack_a, int argc, char **argv);
+void		init_stack_a(t_node **stack_a, /*int ac,*/ char **av);
 t_node		*init_stack_b(void);
 t_node		*get_last_node(t_node *stack);
 t_node		*get_penultimate_node(t_node *stack);
@@ -61,10 +58,14 @@ t_node		*node_new(int nb);
 t_node		*stack_add(t_node *stack, t_node *node_new);
 void		print_stack(t_node *stack_a, t_node *stack_b);
 
+void		free_args(char **args);
 void		free_stack(t_node **stack);
 void		exit_error(t_node **stack_a, t_node **stack_b, char **argv);
-void		check_args(char **argv);
+
 int			split_av_size(char **av);
+int			has_duplicates(char **argv);
+int			syntax_errors(char *str);
+int			validate_args(char **argv);
 
 void		sort_stack(t_node **stack_a, t_node **stack_b);
 
@@ -84,6 +85,9 @@ void	prep_for_push(t_node	**stack,
 void	set_cheapest(t_node	*stack);
 void	init_nodes_a(t_node *stack_a, t_node *stack_b);
 void	init_nodes_b(t_node *stack_a, t_node *stack_b);
+
+void	set_target_a(t_node *stack_a, t_node *stack_b);
+void	set_target_b(t_node *stack_a, t_node *stack_b);
 
 
 /*    SUPPRIMER   */

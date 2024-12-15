@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:39:22 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/11 13:06:29 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:10:59 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,53 +61,56 @@ t_node	*find_max_node(t_node *stack)
 	t_node	*max_node;
 	t_node	*current_node;
 
-	printf("Finding max node in stack:\n");
 	if (!stack)
 	{
-		printf("Stack is empty!\n");
 		return (NULL);
 	}
 	max_node = stack;
 	current_node = stack;
 	while (current_node)
 	{
-		printf("Current value: %d\n", current_node->value);
 		if (current_node->value > max_node->value)
 			max_node = current_node;
 		current_node = current_node->next;
 	}
-	printf("Max value found: %d\n", max_node->value);
 	return (max_node);
 }
 
 t_node	*get_cheapest(t_node *stack)
 {
+	t_node	*cheapest;
+	int		min_cost;
+
 	if (!stack)
 		return (NULL);
+	cheapest = stack;
+	min_cost = stack->cost;
 	while (stack)
 	{
-		if (stack->cheapest)
-			return (stack);
+		if (stack->cost < min_cost)
+		{
+			min_cost = stack->cost;
+			cheapest = stack;
+		}
 		stack = stack->next;
 	}
-	return (NULL);
+	return (cheapest);
 }
 
-/*      debug    */
-
-void print_stacks(t_node *stack_a, t_node *stack_b)
-{
-    printf("\nStack A:\n");
-    while (stack_a)
-    {
-        printf("%d ", stack_a->value);
-        stack_a = stack_a->next;
-    }
-    printf("\nStack B:\n");
-    while (stack_b)
-    {
-        printf("%d ", stack_b->value);
-        stack_b = stack_b->next;
-    }
-    printf("\n\n");
-}
+// /*      debug    */
+// void print_stacks(t_node *stack_a, t_node *stack_b)
+// {
+// 	printf("\nStack A:\n");
+// 	while (stack_a)
+// 	{
+// 		printf("%d ", stack_a->value);
+// 		stack_a = stack_a->next;
+// 	}
+// 	printf("\nStack B:\n");
+// 	while (stack_b)
+// 	{
+// 		printf("%d ", stack_b->value);
+// 		stack_b = stack_b->next;
+// 	}
+// 	printf("\n\n");
+// }

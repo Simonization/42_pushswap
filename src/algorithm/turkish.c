@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 15:18:52 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/11 13:28:14 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:52:55 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,33 @@ static void	move_a_to_b(t_node **stack_a, t_node **stack_b)
 // 	pb(stack_b, stack_a);
 // }
 
+// static void	move_b_to_a(t_node **stack_a, t_node **stack_b)
+// {
+// 	prep_for_push(stack_a, (*stack_b)->target_node, 'a');
+// 	pa(stack_a, stack_b);
+// }
+
 static void	move_b_to_a(t_node **stack_a, t_node **stack_b)
 {
-	prep_for_push(stack_a, (*stack_b)->target_node, 'a');
+	t_node *cheap = get_cheapest(*stack_b);
+	bool rotate_b = cheap->upper_median;
+	bool rotate_a = cheap->target_node->upper_median;
+
+	// While both elements are not at the top and can be rotated together
+	while (*stack_b != cheap && *stack_a != cheap->target_node &&
+		   rotate_b && rotate_a)
+		rr(stack_a, stack_b);
+
+	while (*stack_b != cheap && *stack_a != cheap->target_node &&
+		   !rotate_b && !rotate_a)
+		rrr(stack_a, stack_b);
+
+	// Finish individual rotations if needed
+	while (*stack_b != cheap)
+		rotate_b ? rb(stack_b) : rrb(stack_b);
+	while (*stack_a != cheap->target_node)
+		rotate_a ? ra(stack_a) : rra(stack_a);
+
 	pa(stack_a, stack_b);
 }
 
@@ -77,16 +101,17 @@ void	sort_large(t_node **stack_a, t_node **stack_b)
 	int	len_a;
 
 	len_a = get_stack_size(*stack_a);
-	if (len_a-- > 3 && !stack_is_sorted(*stack_a))
+	if (len_a-- > 3)
 	{	
 		pb(stack_b, stack_a);
-		print_stacks(*stack_a, *stack_b);
+		//print_stacks(*stack_a, *stack_b);
 	}
-	if (len_a-- > 3 && !stack_is_sorted(*stack_a))
+	if (len_a-- > 3)
 	{
 		pb(stack_b, stack_a);
-		print_stacks(*stack_a, *stack_b);
+		//print_stacks(*stack_a, *stack_b);
 	}
+	/*
 	printf("Stack B after pushes:\n");
 	t_node *tmp = *stack_b;
 	while (tmp)
@@ -95,7 +120,8 @@ void	sort_large(t_node **stack_a, t_node **stack_b)
 		tmp = tmp->next;
 	}
 	printf("\n");
-	while (len_a-- > 3 && !stack_is_sorted(*stack_a))
+	*/
+	while (len_a-- > 3)
 	{
 		init_nodes_a(*stack_a, *stack_b);
 		move_a_to_b(stack_a, stack_b);
