@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 19:22:04 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 19:42:12 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:00:34 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,12 @@ void	exit_error(t_node **stack_a, t_node **stack_b, char **argv)
 	free_stack(stack_b);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
+}
+
+int	handle_input_error(char **args)
+{
+	ft_putstr_fd("Error\n", 2);
+	if (args)
+		free(args);
+	return (1);
 }

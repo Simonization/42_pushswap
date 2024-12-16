@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 12:40:40 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/15 19:43:46 by slangero         ###   ########.fr       */
+/*   Created: 2024/12/16 18:17:27 by slangero          #+#    #+#             */
+/*   Updated: 2024/12/16 18:40:42 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	init_stack_a(t_node **stack_a, char **av)
+{
+	long	nb;
+	int		i;
+
+	*stack_a = NULL;
+	i = 0;
+	while (av[i])
+	{
+		nb = ft_atol(av[i]);
+		if (i == 0)
+			*stack_a = node_new((int)nb);
+		else
+			stack_add(*stack_a, node_new((int)nb));
+		i++;
+	}
+}
+
+t_node	*init_stack_b(void)
+{
+	t_node	*stack_b;
+
+	stack_b = NULL;
+	return (stack_b);
+}
 
 t_node	*node_new(int nb)
 {
